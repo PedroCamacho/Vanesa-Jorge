@@ -1,33 +1,30 @@
-class CuentaAtras implements Runnable {
+class cuentatras implements Runnable {
 	Thread t;
 
-	public CuentaAtras() {
-		t = new Thread(this, "Thread cuentaAtras");
+	cuentatras() {
+		t = new Thread(this, "Hilo cuenta atras");
 		t.start();
 	}
 
 	@Override
 	public void run() {
-		try {
-			for (int i = 10; i >= 1; i--) {
+
+		for (int i = 10; i >= 1; i--) {
+			System.out.println(i);
+			try {
 				t.sleep(1000);
-				System.out.println(i);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
 	}
 }
 
 public class Ejercicio2 {
-	public static void main(String[] args) {
-		try {
-			System.out.println("Comienzo de la cuenta atrás:");
-			new CuentaAtras();
-			Thread.sleep(11000);
-			System.out.println("Fin de la cuenta atrás");
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+	public static void main(String[] args) throws InterruptedException {
+		System.out.println("Empieza la cuenta atras");
+		new cuentatras();
+		Thread.sleep(11000);
+		System.out.println("Termina la cuenta atras");
 	}
 }
